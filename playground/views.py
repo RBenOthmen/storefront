@@ -6,5 +6,5 @@ from store.models import Product
 
 # Create your views here.
 def say_hello(request):
-    exists = Product.objects.filter(pk=0).exists()
-    return render(request, "hello.html", {"name": "Rami"})
+    query_set = Product.objects.filter(title__contains="coffee")
+    return render(request, "hello.html", {"name": "Rami", "products": list(query_set)})
