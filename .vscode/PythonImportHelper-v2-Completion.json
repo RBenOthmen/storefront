@@ -401,6 +401,14 @@
         "documentation": {}
     },
     {
+        "label": "ExpressionWrapper",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
         "label": "Concat",
         "importPath": "django.db.models.functions",
         "description": "django.db.models.functions",
@@ -438,6 +446,14 @@
         "description": "store.models",
         "isExtraImport": true,
         "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "DecimalField",
+        "importPath": "django.db.models.fields",
+        "description": "django.db.models.fields",
+        "isExtraImport": true,
+        "detail": "django.db.models.fields",
         "documentation": {}
     },
     {
@@ -541,7 +557,7 @@
         "kind": 2,
         "importPath": "playground.views",
         "description": "playground.views",
-        "peekOfCode": "def say_hello(request):\n    query_set = Customer.objects.annotate(\n        orders_count=Count('order')\n    )\n    return render(request, \"hello.html\", {\"name\": \"Rami\", \"result\": list(query_set)})",
+        "peekOfCode": "def say_hello(request):\n    discounted_price = ExpressionWrapper (\n        F('unit_price') * 0.8, output_field=DecimalField())\n    query_set = Product.objects.annotate(discounted_price=discounted_price)\n    return render(request, \"hello.html\", {\"name\": \"Rami\", \"result\": list(query_set)})",
         "detail": "playground.views",
         "documentation": {}
     },
