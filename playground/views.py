@@ -7,5 +7,5 @@ from store.models import Product, OrderItem
 
 # Create your views here.
 def say_hello(request):
-    query_set = OrderItem.objects.order_by("unit_price")[5:10]
+    query_set = OrderItem.objects.values("product_id").distinct()
     return render(request, "hello.html", {"name": "Rami", "products": list(query_set)})
