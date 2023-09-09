@@ -3,13 +3,15 @@ from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q, F, Value, Func, Count, ExpressionWrapper
 from django.db.models.functions import Concat
-from store.models import Product, OrderItem, Order, Customer
 from django.db.models.fields import DecimalField
+from tags.models import TaggedItem, ContentType
+from store.models import Product
 
 
 # Create your views here.
 def say_hello(request):
-    discounted_price = ExpressionWrapper (
-        F('unit_price') * 0.8, output_field=DecimalField())
-    query_set = Product.objects.annotate(discounted_price=discounted_price)
-    return render(request, "hello.html", {"name": "Rami", "result": list(query_set)})
+    content_type = ContentType.objects.get_for_model(Product)
+    query_set = TaggedItem.objects.select_related("tag").filter(
+        content_type=content_type, object_id=1
+    )
+    return render(request, "hello.html", {"name": "Rami", "tags": list(query_set)})

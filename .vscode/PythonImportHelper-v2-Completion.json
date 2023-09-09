@@ -128,6 +128,14 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -417,43 +425,35 @@
         "documentation": {}
     },
     {
-        "label": "Product",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "OrderItem",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Order",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Customer",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
         "label": "DecimalField",
         "importPath": "django.db.models.fields",
         "description": "django.db.models.fields",
         "isExtraImport": true,
         "detail": "django.db.models.fields",
+        "documentation": {}
+    },
+    {
+        "label": "TaggedItem",
+        "importPath": "tags.models",
+        "description": "tags.models",
+        "isExtraImport": true,
+        "detail": "tags.models",
+        "documentation": {}
+    },
+    {
+        "label": "ContentType",
+        "importPath": "tags.models",
+        "description": "tags.models",
+        "isExtraImport": true,
+        "detail": "tags.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
         "documentation": {}
     },
     {
@@ -557,7 +557,7 @@
         "kind": 2,
         "importPath": "playground.views",
         "description": "playground.views",
-        "peekOfCode": "def say_hello(request):\n    discounted_price = ExpressionWrapper (\n        F('unit_price') * 0.8, output_field=DecimalField())\n    query_set = Product.objects.annotate(discounted_price=discounted_price)\n    return render(request, \"hello.html\", {\"name\": \"Rami\", \"result\": list(query_set)})",
+        "peekOfCode": "def say_hello(request):\n    content_type = ContentType.objects.get_for_model(Product)\n    query_set = TaggedItem.objects.select_related(\"tag\").filter(\n        content_type=content_type, object_id=1\n    )\n    return render(request, \"hello.html\", {\"name\": \"Rami\", \"tags\": list(query_set)})",
         "detail": "playground.views",
         "documentation": {}
     },
@@ -904,6 +904,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "tags.migrations.0002_rename_taggditem_taggeditem",
+        "description": "tags.migrations.0002_rename_taggditem_taggeditem",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('contenttypes', '0002_remove_content_type_name'),\n        ('tags', '0001_initial'),\n    ]\n    operations = [\n        migrations.RenameModel(\n            old_name='TaggdItem',\n            new_name='TaggedItem',\n        ),",
+        "detail": "tags.migrations.0002_rename_taggditem_taggeditem",
+        "documentation": {}
+    },
+    {
         "label": "TagsConfig",
         "kind": 6,
         "importPath": "tags.apps",
@@ -917,16 +926,16 @@
         "kind": 6,
         "importPath": "tags.models",
         "description": "tags.models",
-        "peekOfCode": "class Tag(models.Model):\n    label = models.CharField(max_length=255)\nclass TaggdItem(models.Model):\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
+        "peekOfCode": "class Tag(models.Model):\n    label = models.CharField(max_length=255)\nclass TaggedItem(models.Model):\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
         "detail": "tags.models",
         "documentation": {}
     },
     {
-        "label": "TaggdItem",
+        "label": "TaggedItem",
         "kind": 6,
         "importPath": "tags.models",
         "description": "tags.models",
-        "peekOfCode": "class TaggdItem(models.Model):\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
+        "peekOfCode": "class TaggedItem(models.Model):\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
         "detail": "tags.models",
         "documentation": {}
     },
