@@ -7,5 +7,7 @@ from store.models import Product, OrderItem
 
 # Create your views here.
 def say_hello(request):
-    query_set = OrderItem.objects.values("product_id").distinct()
+    query_set = Product.objects.filter(
+        id__in=OrderItem.objects.values("product_id").distinct()
+    ).order_by("title")
     return render(request, "hello.html", {"name": "Rami", "products": list(query_set)})
