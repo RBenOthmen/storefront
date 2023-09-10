@@ -10,10 +10,9 @@ from store.models import Product, Collection
 
 # Create your views here.
 def say_hello(request):
-    # collection = Collection(pk=11)
-    # collection.featured_product = None
-    # collection.save()
+    collection = Collection(pk=11)
+    collection.delete()
 
-    Collection.objects.filter(pk=11).update(featured_product=None)
+    Collection.objects.filter(id__lt=5).delete()
 
     return render(request, "hello.html", {"name": "Rami"})
