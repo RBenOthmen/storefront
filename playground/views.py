@@ -5,12 +5,15 @@ from django.db.models import Q, F, Value, Func, Count, ExpressionWrapper
 from django.db.models.functions import Concat
 from django.db.models.fields import DecimalField
 from tags.models import TaggedItem, ContentType
-from store.models import Product
+from store.models import Product, Collection
 
 
 # Create your views here.
 def say_hello(request):
-    query_set = Product.objects.all()
-    list(query_set)
-    query_set[0]
-    return render(request, "hello.html", {"name": "Rami", "tags": list(query_set)})
+    collection = Collection()
+    collection.title = "Video Games"
+    collection.featured_product = Product(pk=1)
+    collection.save()
+    collection.id
+
+    return render(request, "hello.html", {"name": "Rami"})
