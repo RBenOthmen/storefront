@@ -40,6 +40,22 @@
         "documentation": {}
     },
     {
+        "label": "transaction",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "connection",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -457,6 +473,30 @@
         "documentation": {}
     },
     {
+        "label": "Collection",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Order",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "OrderItem",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -557,7 +597,7 @@
         "kind": 2,
         "importPath": "playground.views",
         "description": "playground.views",
-        "peekOfCode": "def say_hello(request):\n    content_type = ContentType.objects.get_for_model(Product)\n    query_set = TaggedItem.objects.select_related(\"tag\").filter(\n        content_type=content_type, object_id=1\n    )\n    return render(request, \"hello.html\", {\"name\": \"Rami\", \"tags\": list(query_set)})",
+        "peekOfCode": "def say_hello(request):\n    # with connection.cursor() as cursor:\n    #     cursor.callproc('get_customers', [1, 2, 'a'])\n    query_set = Product.objects.raw('SELECT id, title FROM store_product')\n    return render(request, \"hello.html\", {\"name\": \"Rami\"})",
         "detail": "playground.views",
         "documentation": {}
     },
@@ -616,6 +656,33 @@
         "documentation": {}
     },
     {
+        "label": "ProductAdmin",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_per_page = 10\n    list_select_related = [\"collection\"]\n    def collection_title(self, product):\n        return product.collection.title\n    @admin.display(ordering=\"inventory\")\n    def inventory_status(self, product):\n        if product.inventory < 10:",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "OrderAdmin",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    # list_editable = [\"placed_at\"]\n    # ordering = [\"placed_at\"]\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n@admin.register(models.Customer)\nclass CustomerAdmin(admin.ModelAdmin):",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerAdmin",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = [\"first_name\", \"last_name\", \"membership\"]\n    list_editable = [\"membership\"]\n    ordering = [\"first_name\", \"last_name\"]\n    list_per_page = 10\nadmin.site.register(models.Collection)",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
         "label": "StoreConfig",
         "kind": 6,
         "importPath": "store.apps",
@@ -629,7 +696,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Promotion(models.Model):\n    description = models.CharField(max_length=255)\n    discount = models.FloatField()\nclass Collection(models.Model):\n    title = models.CharField(max_length=255)\n    featured_product = models.ForeignKey(\n        \"Product\", on_delete=models.SET_NULL, null=True, related_name=\"+\"\n    )\nclass Product(models.Model):\n    title = models.CharField(max_length=255)",
+        "peekOfCode": "class Promotion(models.Model):\n    description = models.CharField(max_length=255)\n    discount = models.FloatField()\nclass Collection(models.Model):\n    title = models.CharField(max_length=255)\n    featured_product = models.ForeignKey(\n        \"Product\", on_delete=models.SET_NULL, null=True, related_name=\"+\"\n    )\n    def __str__(self) -> str:\n        return self.title",
         "detail": "store.models",
         "documentation": {}
     },
@@ -638,7 +705,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Collection(models.Model):\n    title = models.CharField(max_length=255)\n    featured_product = models.ForeignKey(\n        \"Product\", on_delete=models.SET_NULL, null=True, related_name=\"+\"\n    )\nclass Product(models.Model):\n    title = models.CharField(max_length=255)\n    slug = models.SlugField()\n    description = models.TextField()\n    unit_price = models.DecimalField(max_digits=6, decimal_places=2)",
+        "peekOfCode": "class Collection(models.Model):\n    title = models.CharField(max_length=255)\n    featured_product = models.ForeignKey(\n        \"Product\", on_delete=models.SET_NULL, null=True, related_name=\"+\"\n    )\n    def __str__(self) -> str:\n        return self.title\n    class Meta:\n        ordering = [\"title\"]\nclass Product(models.Model):",
         "detail": "store.models",
         "documentation": {}
     },
@@ -647,7 +714,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Product(models.Model):\n    title = models.CharField(max_length=255)\n    slug = models.SlugField()\n    description = models.TextField()\n    unit_price = models.DecimalField(max_digits=6, decimal_places=2)\n    inventory = models.IntegerField()\n    last_update = models.DateTimeField(auto_now=True)\n    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)\n    promotions = models.ManyToManyField(Promotion)\nclass Customer(models.Model):",
+        "peekOfCode": "class Product(models.Model):\n    title = models.CharField(max_length=255)\n    slug = models.SlugField()\n    description = models.TextField()\n    unit_price = models.DecimalField(max_digits=6, decimal_places=2)\n    inventory = models.IntegerField()\n    last_update = models.DateTimeField(auto_now=True)\n    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)\n    promotions = models.ManyToManyField(Promotion)\n    def __str__(self) -> str:",
         "detail": "store.models",
         "documentation": {}
     },
@@ -877,6 +944,24 @@
         "documentation": {}
     },
     {
+        "label": "admin.site.site_header",
+        "kind": 5,
+        "importPath": "storefront.urls",
+        "description": "storefront.urls",
+        "peekOfCode": "admin.site.site_header = 'Storefront Admin'\nadmin.site.index_title = 'Admin'\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('playground/', include('playground.urls')),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
+        "detail": "storefront.urls",
+        "documentation": {}
+    },
+    {
+        "label": "admin.site.index_title",
+        "kind": 5,
+        "importPath": "storefront.urls",
+        "description": "storefront.urls",
+        "peekOfCode": "admin.site.index_title = 'Admin'\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('playground/', include('playground.urls')),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
+        "detail": "storefront.urls",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "storefront.urls",
@@ -922,11 +1007,20 @@
         "documentation": {}
     },
     {
+        "label": "TaggedItemManager",
+        "kind": 6,
+        "importPath": "tags.models",
+        "description": "tags.models",
+        "peekOfCode": "class TaggedItemManager(models.Manager):\n    def get_taggs_for(self, object_type, object_id):\n        content_type = ContentType.objects.get_for_model(object_type)\n        return TaggedItem.objects.select_related(\"tag\").filter(\n            content_type=content_type, object_id=object_id\n        )\nclass Tag(models.Model):\n    label = models.CharField(max_length=255)\nclass TaggedItem(models.Model):\n    objects = TaggedItemManager()",
+        "detail": "tags.models",
+        "documentation": {}
+    },
+    {
         "label": "Tag",
         "kind": 6,
         "importPath": "tags.models",
         "description": "tags.models",
-        "peekOfCode": "class Tag(models.Model):\n    label = models.CharField(max_length=255)\nclass TaggedItem(models.Model):\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
+        "peekOfCode": "class Tag(models.Model):\n    label = models.CharField(max_length=255)\nclass TaggedItem(models.Model):\n    objects = TaggedItemManager()\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
         "detail": "tags.models",
         "documentation": {}
     },
@@ -935,7 +1029,7 @@
         "kind": 6,
         "importPath": "tags.models",
         "description": "tags.models",
-        "peekOfCode": "class TaggedItem(models.Model):\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
+        "peekOfCode": "class TaggedItem(models.Model):\n    objects = TaggedItemManager()\n    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
         "detail": "tags.models",
         "documentation": {}
     },
