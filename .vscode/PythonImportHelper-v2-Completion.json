@@ -385,6 +385,15 @@
         "documentation": {}
     },
     {
+        "label": "django.db.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
         "label": "Q",
         "importPath": "django.db.models",
         "description": "django.db.models",
@@ -426,6 +435,14 @@
     },
     {
         "label": "ExpressionWrapper",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Count",
         "importPath": "django.db.models",
         "description": "django.db.models",
         "isExtraImport": true,
@@ -494,6 +511,30 @@
         "description": "store.models",
         "isExtraImport": true,
         "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "QuerySet",
+        "importPath": "django.db.models.query",
+        "description": "django.db.models.query",
+        "isExtraImport": true,
+        "detail": "django.db.models.query",
+        "documentation": {}
+    },
+    {
+        "label": "HttpRequest",
+        "importPath": "django.http.request",
+        "description": "django.http.request",
+        "isExtraImport": true,
+        "detail": "django.http.request",
         "documentation": {}
     },
     {
@@ -669,7 +710,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    # list_editable = [\"placed_at\"]\n    # ordering = [\"placed_at\"]\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n@admin.register(models.Customer)\nclass CustomerAdmin(admin.ModelAdmin):",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n# @admin.register(models.Collection)\n# class CollectionAdmin(admin.ModelAdmin):\n#     list_display = (\"title\")\n#     # list_per_page = 10",
         "detail": "store.admin",
         "documentation": {}
     },
