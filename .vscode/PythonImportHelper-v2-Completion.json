@@ -780,11 +780,20 @@
         "documentation": {}
     },
     {
+        "label": "OrderItemInline",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class OrderItemInline(admin.TabularInline):\n    model = models.OrderItem\n    extra = 0\n    min_num = 1\n    max_num = 10\n@admin.register(models.Order)\nclass OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    inlines = [OrderItemInline]\n    list_display = (\"id\", \"placed_at\", \"customer\")",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
         "label": "OrderAdmin",
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n@admin.register(models.Collection)\nclass CollectionAdmin(admin.ModelAdmin):\n    list_display = [\"title\", \"products_count\"]",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    inlines = [OrderItemInline]\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n@admin.register(models.Collection)\nclass CollectionAdmin(admin.ModelAdmin):",
         "detail": "store.admin",
         "documentation": {}
     },
