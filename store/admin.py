@@ -1,6 +1,6 @@
 import django.db.models
 from typing import Any
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.db.models.query import QuerySet
 from django.db.models.aggregates import Count
 from django.http.request import HttpRequest
@@ -23,6 +23,7 @@ class InventoryFilter(admin.SimpleListFilter):
 
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
+    actions = ["clear_inventory"]
     list_display = ["title", "unit_price", "inventory_status", "collection_title"]
     list_editable = ["unit_price"]
     list_filter = ["collection", "last_update", InventoryFilter]
@@ -37,6 +38,15 @@ class ProductAdmin(admin.ModelAdmin):
         if product.inventory < 10:
             return "Low"
         return "OK"
+
+    @admin.action(description="Clear inventory")
+    def clear_inventory(self, request, query_set):
+        update_count = query_set.update(inventory=0)
+        self.message_user(
+            request,
+            f"{update_count} products were successfully updated.",
+            messages.SUCCESS,
+        )
 
 
 @admin.register(models.Order)
