@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "playground",
     "debug_toolbar",
     "store",
+    "store_custom",
     "tags",
     "likes",
 ]
@@ -97,7 +98,7 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators 
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

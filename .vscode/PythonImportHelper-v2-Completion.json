@@ -144,6 +144,14 @@
         "documentation": {}
     },
     {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -230,6 +238,22 @@
         "description": "django.contrib",
         "isExtraImport": true,
         "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
         "documentation": {}
     },
     {
@@ -334,6 +358,22 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -546,6 +586,14 @@
         "documentation": {}
     },
     {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -591,14 +639,6 @@
         "description": "django.utils.html",
         "isExtraImport": true,
         "detail": "django.utils.html",
-        "documentation": {}
-    },
-    {
-        "label": "GenericTabularInline",
-        "importPath": "django.contrib.contenttypes.admin",
-        "description": "django.contrib.contenttypes.admin",
-        "isExtraImport": true,
-        "detail": "django.contrib.contenttypes.admin",
         "documentation": {}
     },
     {
@@ -649,6 +689,22 @@
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "ProductAdmin",
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "isExtraImport": true,
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "GenericTabularInline",
+        "importPath": "django.contrib.contenttypes.admin",
+        "description": "django.contrib.contenttypes.admin",
+        "isExtraImport": true,
+        "detail": "django.contrib.contenttypes.admin",
         "documentation": {}
     },
     {
@@ -782,16 +838,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = \"inventory\"\n    parameter_name = \"inventory\"\n    def lookups(self, request: Any, model_admin: Any):\n        return [(\"<10\", \"Low\")]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == \"<10\":\n            return queryset.filter(inventory__lt=10)\nclass TagInline(GenericTabularInline):\n    autocomplete_fields = ['tag']",
-        "detail": "store.admin",
-        "documentation": {}
-    },
-    {
-        "label": "TagInline",
-        "kind": 6,
-        "importPath": "store.admin",
-        "description": "store.admin",
-        "peekOfCode": "class TagInline(GenericTabularInline):\n    autocomplete_fields = ['tag']\n    model = TaggedItem\n@admin.register(models.Product)\nclass ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"collection\"]\n    prepopulated_fields = {\"slug\": [\"title\"]}\n    actions = [\"clear_inventory\"]\n    inlines = [TagInline]\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]",
+        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = \"inventory\"\n    parameter_name = \"inventory\"\n    def lookups(self, request: Any, model_admin: Any):\n        return [(\"<10\", \"Low\")]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == \"<10\":\n            return queryset.filter(inventory__lt=10)\n@admin.register(models.Product)\nclass ProductAdmin(admin.ModelAdmin):",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -800,7 +847,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"collection\"]\n    prepopulated_fields = {\"slug\": [\"title\"]}\n    actions = [\"clear_inventory\"]\n    inlines = [TagInline]\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_filter = [\"collection\", \"last_update\", InventoryFilter]\n    list_per_page = 10\n    list_select_related = [\"collection\"]",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"collection\"]\n    prepopulated_fields = {\"slug\": [\"title\"]}\n    actions = [\"clear_inventory\"]\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_filter = [\"collection\", \"last_update\", InventoryFilter]\n    list_per_page = 10\n    list_select_related = [\"collection\"]\n    def collection_title(self, product):",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1135,6 +1182,33 @@
         "description": "storefront.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "storefront.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "TagInline",
+        "kind": 6,
+        "importPath": "store_custom.admin",
+        "description": "store_custom.admin",
+        "peekOfCode": "class TagInline(GenericTabularInline):\n    autocomplete_fields = [\"tag\"]\n    model = TaggedItem\nclass CustomProductAdmin(ProductAdmin):\n    inlines = [TagInline]\nadmin.site.unregister(Product)\nadmin.site.register(Product, CustomProductAdmin)",
+        "detail": "store_custom.admin",
+        "documentation": {}
+    },
+    {
+        "label": "CustomProductAdmin",
+        "kind": 6,
+        "importPath": "store_custom.admin",
+        "description": "store_custom.admin",
+        "peekOfCode": "class CustomProductAdmin(ProductAdmin):\n    inlines = [TagInline]\nadmin.site.unregister(Product)\nadmin.site.register(Product, CustomProductAdmin)",
+        "detail": "store_custom.admin",
+        "documentation": {}
+    },
+    {
+        "label": "StoreCustomConfig",
+        "kind": 6,
+        "importPath": "store_custom.apps",
+        "description": "store_custom.apps",
+        "peekOfCode": "class StoreCustomConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'store_custom'",
+        "detail": "store_custom.apps",
         "documentation": {}
     },
     {
