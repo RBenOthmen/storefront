@@ -353,6 +353,14 @@
         "documentation": {}
     },
     {
+        "label": "reverse",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "include",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -442,14 +450,6 @@
         "documentation": {}
     },
     {
-        "label": "Count",
-        "importPath": "django.db.models",
-        "description": "django.db.models",
-        "isExtraImport": true,
-        "detail": "django.db.models",
-        "documentation": {}
-    },
-    {
         "label": "Concat",
         "importPath": "django.db.models.functions",
         "description": "django.db.models.functions",
@@ -530,11 +530,35 @@
         "documentation": {}
     },
     {
+        "label": "Count",
+        "importPath": "django.db.models.aggregates",
+        "description": "django.db.models.aggregates",
+        "isExtraImport": true,
+        "detail": "django.db.models.aggregates",
+        "documentation": {}
+    },
+    {
         "label": "HttpRequest",
         "importPath": "django.http.request",
         "description": "django.http.request",
         "isExtraImport": true,
         "detail": "django.http.request",
+        "documentation": {}
+    },
+    {
+        "label": "format_html",
+        "importPath": "django.utils.html",
+        "description": "django.utils.html",
+        "isExtraImport": true,
+        "detail": "django.utils.html",
+        "documentation": {}
+    },
+    {
+        "label": "urlencode",
+        "importPath": "django.utils.html",
+        "description": "django.utils.html",
+        "isExtraImport": true,
+        "detail": "django.utils.html",
         "documentation": {}
     },
     {
@@ -710,7 +734,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n# @admin.register(models.Collection)\n# class CollectionAdmin(admin.ModelAdmin):\n#     list_display = (\"title\")\n#     # list_per_page = 10",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n# @admin.register(models.Collection)\n# class CollectionAdmin(admin.ModelAdmin):\n#     list_display = [\"title\", \"products_count\"]\n#     @admin.display(ordering=\"products_count\")",
         "detail": "store.admin",
         "documentation": {}
     },
