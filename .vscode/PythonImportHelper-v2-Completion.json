@@ -193,6 +193,14 @@
         "documentation": {}
     },
     {
+        "label": "messages",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -721,11 +729,20 @@
         "documentation": {}
     },
     {
+        "label": "InventoryFilter",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = \"inventory\"\n    parameter_name = \"inventory\"\n    def lookups(self, request: Any, model_admin: Any):\n        return [(\"<10\", \"Low\")]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == \"<10\":\n            return queryset.filter(inventory__lt=10)\n@admin.register(models.Product)\nclass ProductAdmin(admin.ModelAdmin):",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
         "label": "ProductAdmin",
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_per_page = 10\n    list_select_related = [\"collection\"]\n    def collection_title(self, product):\n        return product.collection.title\n    @admin.display(ordering=\"inventory\")\n    def inventory_status(self, product):\n        if product.inventory < 10:",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    actions = [\"clear_inventory\"]\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_filter = [\"collection\", \"last_update\", InventoryFilter]\n    list_per_page = 10\n    list_select_related = [\"collection\"]\n    def collection_title(self, product):\n        return product.collection.title\n    @admin.display(ordering=\"inventory\")",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -734,7 +751,16 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n# @admin.register(models.Collection)\n# class CollectionAdmin(admin.ModelAdmin):\n#     list_display = [\"title\", \"products_count\"]\n#     @admin.display(ordering=\"products_count\")",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n@admin.register(models.Collection)\nclass CollectionAdmin(admin.ModelAdmin):\n    list_display = [\"title\", \"products_count\"]\n    @admin.display(ordering=\"products_count\")",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "CollectionAdmin",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class CollectionAdmin(admin.ModelAdmin):\n    list_display = [\"title\", \"products_count\"]\n    @admin.display(ordering=\"products_count\")\n    def products_count(self, collection):\n        url = (\n            reverse(\"admin:store_product_changelist\")\n            + \"?\"\n            + urlencode({\"collection__id\": str(collection.id)})\n        )\n        return format_html(",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -743,7 +769,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = [\"first_name\", \"last_name\", \"membership\"]\n    list_editable = [\"membership\"]\n    ordering = [\"first_name\", \"last_name\"]\n    list_per_page = 10\nadmin.site.register(models.Collection)",
+        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = [\"first_name\", \"last_name\", \"membership\"]\n    list_editable = [\"membership\"]\n    list_per_page = 10\n    ordering = [\"first_name\", \"last_name\"]\n    search_fields = [\"first_name__istartswith\", \"last_name__istartswith\"]",
         "detail": "store.admin",
         "documentation": {}
     },
