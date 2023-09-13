@@ -425,6 +425,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "include",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -438,6 +446,14 @@
         "description": "django.urls",
         "isExtraImport": true,
         "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -647,6 +663,22 @@
         "description": "django.core.validators",
         "isExtraImport": true,
         "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
         "documentation": {}
     },
     {
@@ -978,6 +1010,33 @@
         "documentation": {}
     },
     {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "store.urls",
+        "description": "store.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"products/\", views.product_list),\n    path(\"products/<int:id>/\", views.product_detail), \n]",
+        "detail": "store.urls",
+        "documentation": {}
+    },
+    {
+        "label": "product_list",
+        "kind": 2,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "def product_list(request):\n    return Response(\"ok\")\n@api_view()\ndef product_detail(request, id):\n    return Response(id)",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
+        "label": "product_detail",
+        "kind": 2,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "def product_detail(request, id):\n    return Response(id)",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "storefront.asgi",
@@ -1018,7 +1077,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"playground\",",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"rest_framework\",",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1027,7 +1086,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"playground\",\n    \"debug_toolbar\",\n    \"store\",",
+        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"rest_framework\",\n    \"playground\",\n    \"debug_toolbar\",",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1072,7 +1131,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"storefront.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"storefront\",\n        \"HOST\": \"localhost\",\n        \"USER\": \"root\",\n        \"PASSWORD\": \"09/11/99\",",
+        "peekOfCode": "WSGI_APPLICATION = \"storefront.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"storefront2\",\n        \"HOST\": \"localhost\",\n        \"USER\": \"root\",\n        \"PASSWORD\": \"09/11/99\",",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1081,7 +1140,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"storefront\",\n        \"HOST\": \"localhost\",\n        \"USER\": \"root\",\n        \"PASSWORD\": \"09/11/99\",\n    }\n}\n# Password validation",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"storefront2\",\n        \"HOST\": \"localhost\",\n        \"USER\": \"root\",\n        \"PASSWORD\": \"09/11/99\",\n    }\n}\n# Password validation",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1153,7 +1212,7 @@
         "kind": 5,
         "importPath": "storefront.urls",
         "description": "storefront.urls",
-        "peekOfCode": "admin.site.site_header = 'Storefront Admin'\nadmin.site.index_title = 'Admin'\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('playground/', include('playground.urls')),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
+        "peekOfCode": "admin.site.site_header = \"Storefront Admin\"\nadmin.site.index_title = \"Admin\"\nurlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"playground/\", include(\"playground.urls\")),\n    path(\"store/\", include(\"store.urls\")),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
         "detail": "storefront.urls",
         "documentation": {}
     },
@@ -1162,7 +1221,7 @@
         "kind": 5,
         "importPath": "storefront.urls",
         "description": "storefront.urls",
-        "peekOfCode": "admin.site.index_title = 'Admin'\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('playground/', include('playground.urls')),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
+        "peekOfCode": "admin.site.index_title = \"Admin\"\nurlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"playground/\", include(\"playground.urls\")),\n    path(\"store/\", include(\"store.urls\")),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
         "detail": "storefront.urls",
         "documentation": {}
     },
@@ -1171,7 +1230,7 @@
         "kind": 5,
         "importPath": "storefront.urls",
         "description": "storefront.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('playground/', include('playground.urls')),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"playground/\", include(\"playground.urls\")),\n    path(\"store/\", include(\"store.urls\")),\n    path(\"__debug__/\", include(debug_toolbar.urls)),\n]",
         "detail": "storefront.urls",
         "documentation": {}
     },
