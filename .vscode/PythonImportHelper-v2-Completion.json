@@ -473,15 +473,6 @@
         "documentation": {}
     },
     {
-        "label": "django.db.models",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models",
-        "description": "django.db.models",
-        "detail": "django.db.models",
-        "documentation": {}
-    },
-    {
         "label": "Q",
         "importPath": "django.db.models",
         "description": "django.db.models",
@@ -610,7 +601,7 @@
         "documentation": {}
     },
     {
-        "label": "Product",
+        "label": "Collection",
         "importPath": "store.models",
         "description": "store.models",
         "isExtraImport": true,
@@ -623,22 +614,6 @@
         "description": "store.models",
         "isExtraImport": true,
         "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "QuerySet",
-        "importPath": "django.db.models.query",
-        "description": "django.db.models.query",
-        "isExtraImport": true,
-        "detail": "django.db.models.query",
         "documentation": {}
     },
     {
@@ -650,11 +625,19 @@
         "documentation": {}
     },
     {
-        "label": "HttpRequest",
-        "importPath": "django.http.request",
-        "description": "django.http.request",
+        "label": "Count",
+        "importPath": "django.db.models.aggregates",
+        "description": "django.db.models.aggregates",
         "isExtraImport": true,
-        "detail": "django.http.request",
+        "detail": "django.db.models.aggregates",
+        "documentation": {}
+    },
+    {
+        "label": "QuerySet",
+        "importPath": "django.db.models.query",
+        "description": "django.db.models.query",
+        "isExtraImport": true,
+        "detail": "django.db.models.query",
         "documentation": {}
     },
     {
@@ -722,11 +705,11 @@
         "documentation": {}
     },
     {
-        "label": "ProductSerializer",
-        "importPath": "store.serializers",
-        "description": "store.serializers",
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
         "isExtraImport": true,
-        "detail": "store.serializers",
+        "detail": "rest_framework.views",
         "documentation": {}
     },
     {
@@ -918,7 +901,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = \"inventory\"\n    parameter_name = \"inventory\"\n    def lookups(self, request: Any, model_admin: Any):\n        return [(\"<10\", \"Low\")]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == \"<10\":\n            return queryset.filter(inventory__lt=10)\n@admin.register(models.Product)\nclass ProductAdmin(admin.ModelAdmin):",
+        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = 'inventory'\n    parameter_name = 'inventory'\n    def lookups(self, request, model_admin):\n        return [\n            ('<10', 'Low')\n        ]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == '<10':\n            return queryset.filter(inventory__lt=10)",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -927,25 +910,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"collection\"]\n    prepopulated_fields = {\"slug\": [\"title\"]}\n    actions = [\"clear_inventory\"]\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_filter = [\"collection\", \"last_update\", InventoryFilter]\n    list_per_page = 10\n    list_select_related = [\"collection\"]\n    def collection_title(self, product):",
-        "detail": "store.admin",
-        "documentation": {}
-    },
-    {
-        "label": "OrderItemInline",
-        "kind": 6,
-        "importPath": "store.admin",
-        "description": "store.admin",
-        "peekOfCode": "class OrderItemInline(admin.TabularInline):\n    model = models.OrderItem\n    extra = 0\n    min_num = 1\n    max_num = 10\n@admin.register(models.Order)\nclass OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    inlines = [OrderItemInline]\n    list_display = (\"id\", \"placed_at\", \"customer\")",
-        "detail": "store.admin",
-        "documentation": {}
-    },
-    {
-        "label": "OrderAdmin",
-        "kind": 6,
-        "importPath": "store.admin",
-        "description": "store.admin",
-        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    inlines = [OrderItemInline]\n    list_display = (\"id\", \"placed_at\", \"customer\")\n    list_per_page = 10\n    list_select_related = [\"customer\"]\n    def customer_id(self, order):\n        return order.customer_id\n@admin.register(models.Collection)\nclass CollectionAdmin(admin.ModelAdmin):",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['collection']\n    prepopulated_fields = {\n        'slug': ['title']\n    }\n    actions = ['clear_inventory']\n    list_display = ['title', 'unit_price',\n                    'inventory_status', 'collection_title']\n    list_editable = ['unit_price']\n    list_filter = ['collection', 'last_update', InventoryFilter]",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -954,7 +919,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class CollectionAdmin(admin.ModelAdmin):\n    list_display = [\"title\", \"products_count\"]\n    search_fields = [\"title\"]\n    @admin.display(ordering=\"products_count\")\n    def products_count(self, collection):\n        url = (\n            reverse(\"admin:store_product_changelist\")\n            + \"?\"\n            + urlencode({\"collection__id\": str(collection.id)})\n        )",
+        "peekOfCode": "class CollectionAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['featured_product']\n    list_display = ['title', 'products_count']\n    search_fields = ['title']\n    @admin.display(ordering='products_count')\n    def products_count(self, collection):\n        url = (\n            reverse('admin:store_product_changelist')\n            + '?'\n            + urlencode({",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -963,7 +928,25 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = [\"first_name\", \"last_name\", \"membership\"]\n    list_editable = [\"membership\"]\n    list_per_page = 10\n    ordering = [\"first_name\", \"last_name\"]\n    search_fields = [\"first_name__istartswith\", \"last_name__istartswith\"]",
+        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = ['first_name', 'last_name',  'membership', 'orders']\n    list_editable = ['membership']\n    list_per_page = 10\n    ordering = ['first_name', 'last_name']\n    search_fields = ['first_name__istartswith', 'last_name__istartswith']\n    @admin.display(ordering='orders_count')\n    def orders(self, customer):\n        url = (\n            reverse('admin:store_order_changelist')",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "OrderItemInline",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class OrderItemInline(admin.TabularInline):\n    autocomplete_fields = ['product']\n    min_num = 1\n    max_num = 10\n    model = models.OrderItem\n    extra = 0\n@admin.register(models.Order)\nclass OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['customer']\n    inlines = [OrderItemInline]",
+        "detail": "store.admin",
+        "documentation": {}
+    },
+    {
+        "label": "OrderAdmin",
+        "kind": 6,
+        "importPath": "store.admin",
+        "description": "store.admin",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['customer']\n    inlines = [OrderItemInline]\n    list_display = ['id', 'placed_at', 'customer']",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -999,7 +982,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Product(models.Model):\n    title = models.CharField(max_length=255)\n    slug = models.SlugField()\n    description = models.TextField(null=True, blank=True)\n    unit_price = models.DecimalField(\n        max_digits=6, decimal_places=2, validators=[MinValueValidator(1)]\n    )\n    inventory = models.IntegerField()\n    last_update = models.DateTimeField(auto_now=True)\n    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)",
+        "peekOfCode": "class Product(models.Model):\n    title = models.CharField(max_length=255)\n    slug = models.SlugField()\n    description = models.TextField(null=True, blank=True)\n    unit_price = models.DecimalField(\n        max_digits=6, decimal_places=2, validators=[MinValueValidator(1)]\n    )\n    inventory = models.IntegerField()\n    last_update = models.DateTimeField(auto_now=True)\n    collection = models.ForeignKey(",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1026,7 +1009,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class OrderItem(models.Model):\n    order = models.ForeignKey(Order, on_delete=models.PROTECT)\n    product = models.ForeignKey(Product, on_delete=models.PROTECT)\n    quantity = models.PositiveSmallIntegerField()\n    unit_price = models.DecimalField(max_digits=6, decimal_places=2)\nclass Address(models.Model):\n    street = models.CharField(max_length=255)\n    city = models.CharField(max_length=255)\n    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)\nclass Cart(models.Model):",
+        "peekOfCode": "class OrderItem(models.Model):\n    order = models.ForeignKey(Order, on_delete=models.PROTECT)\n    product = models.ForeignKey(\n        Product, on_delete=models.PROTECT, related_name=\"orderitems\"\n    )\n    quantity = models.PositiveSmallIntegerField()\n    unit_price = models.DecimalField(max_digits=6, decimal_places=2)\nclass Address(models.Model):\n    street = models.CharField(max_length=255)\n    city = models.CharField(max_length=255)",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1058,11 +1041,20 @@
         "documentation": {}
     },
     {
+        "label": "CollectionSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class CollectionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Collection\n        fields = ['id', 'title', 'products_count']\n    products_count = serializers.IntegerField()\nclass ProductSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Product\n        fields = ['id', 'title', 'description', 'slug', 'inventory', 'unit_price', 'price_with_tax', 'collection']\n    price_with_tax = serializers.SerializerMethodField(",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
         "label": "ProductSerializer",
         "kind": 6,
         "importPath": "store.serializers",
         "description": "store.serializers",
-        "peekOfCode": "class ProductSerializer(serializers.Serializer):\n    id = serializers.IntegerField()\n    title = serializers.CharField(max_length=255)\n    price = serializers.DecimalField(\n        max_digits=6, decimal_places=2, source=\"unit_price\"\n    )\n    price_with_tax = serializers.SerializerMethodField(method_name=\"calculate_tax\")\n    def calculate_tax(self, product: Product):\n        return product.unit_price * Decimal(1.1)",
+        "peekOfCode": "class ProductSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Product\n        fields = ['id', 'title', 'description', 'slug', 'inventory', 'unit_price', 'price_with_tax', 'collection']\n    price_with_tax = serializers.SerializerMethodField(\n        method_name='calculate_tax')\n    def calculate_tax(self, product: Product):\n        return product.unit_price * Decimal(1.1)",
         "detail": "store.serializers",
         "documentation": {}
     },
@@ -1071,25 +1063,43 @@
         "kind": 5,
         "importPath": "store.urls",
         "description": "store.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"products/\", views.product_list),\n    path(\"products/<int:id>/\", views.product_detail), \n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"products/\", views.ProductList.as_view()),\n    path(\"products/<int:id>/\", views.ProductDetail.as_view()),\n    path(\"collections/\", views.collection_list),\n    path(\"collections/<int:pk>/\", views.collection_detail, name=\"collection-detail\"),\n]",
         "detail": "store.urls",
         "documentation": {}
     },
     {
-        "label": "product_list",
-        "kind": 2,
+        "label": "ProductList",
+        "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "def product_list(request):\n    query_set = Product.objects.all()\n    serializer = ProductSerializer(query_set, many = True)\n    return Response(serializer.data)\n@api_view()\ndef product_detail(request, id):\n    product = get_object_or_404(Product, pk=id)\n    serializer = ProductSerializer(product)\n    return Response(serializer.data)",
+        "peekOfCode": "class ProductList(APIView):\n    def get(self, request):\n        queryset = Product.objects.select_related(\"collection\").all()\n        serializer = ProductSerializer(\n            queryset, many=True, context={\"request\": request}\n        )\n        return Response(serializer.data)\n    def post(self, request):\n        serializer = ProductSerializer(data=request.data)\n        serializer.is_valid(raise_exception=True)",
         "detail": "store.views",
         "documentation": {}
     },
     {
-        "label": "product_detail",
+        "label": "ProductDetail",
+        "kind": 6,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "class ProductDetail(APIView):\n    def get(serlf, request, id):\n        product = get_object_or_404(Product, pk=id)\n        serializer = ProductSerializer(product)\n        return Response(serializer.data)\n    def put(self, request, id):\n        product = get_object_or_404(Product, pk=id)\n        serializer = ProductSerializer(product, data=request.data)\n        serializer.is_valid(raise_exception=True)\n        serializer.save()",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
+        "label": "collection_list",
         "kind": 2,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "def product_detail(request, id):\n    product = get_object_or_404(Product, pk=id)\n    serializer = ProductSerializer(product)\n    return Response(serializer.data)",
+        "peekOfCode": "def collection_list(request):\n    if request.method == \"GET\":\n        queryset = Collection.objects.annotate(products_count=Count(\"products\")).all()\n        serializer = CollectionSerializer(queryset, many=True)\n        return Response(serializer.data)\n    elif request.method == \"POST\":\n        serializer = CollectionSerializer(data=request.data)\n        serializer.is_valid(raise_exception=True)\n        serializer.save()\n        return Response(serializer.data, status=status.HTTP_201_CREATED)",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
+        "label": "collection_detail",
+        "kind": 2,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "def collection_detail(request, pk):\n    collection = get_object_or_404(\n        Collection.objects.annotate(products_count=Count(\"products\")), pk=pk\n    )\n    if request.method == \"GET\":\n        serializer = CollectionSerializer(collection)\n        return Response(serializer.data)\n    elif request.method == \"PUT\":\n        serializer = CollectionSerializer(collection, data=request.data)\n        serializer.is_valid(raise_exception=True)",
         "detail": "store.views",
         "documentation": {}
     },
