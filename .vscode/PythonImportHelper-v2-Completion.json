@@ -697,6 +697,14 @@
         "documentation": {}
     },
     {
+        "label": "RetrieveUpdateDestroyAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
         "label": "api_view",
         "importPath": "rest_framework.decorators",
         "description": "rest_framework.decorators",
@@ -1071,7 +1079,7 @@
         "kind": 5,
         "importPath": "store.urls",
         "description": "store.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"products/\", views.ProductList.as_view()),\n    path(\"products/<int:id>/\", views.ProductDetail.as_view()),\n    path(\"collections/\", views.CollectionList.as_view()),\n    path(\"collections/<int:pk>/\", views.collection_detail, name=\"collection-detail\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"products/\", views.ProductList.as_view()),\n    path(\"products/<int:pk>/\", views.ProductDetail.as_view()),\n    path(\"collections/\", views.CollectionList.as_view()),\n    path(\"collections/<int:pk>/\", views.CollectionDetail.as_view()),\n]",
         "detail": "store.urls",
         "documentation": {}
     },
@@ -1080,7 +1088,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductList(ListCreateAPIView):\n    queryset = Product.objects.select_related(\"collection\").all()\n    serializer_class = ProductSerializer\n    def get_serializer_context(self):\n        return {\"request\": self.request}\nclass ProductDetail(APIView):\n    def get(self, request, id):\n        product = get_object_or_404(Product, pk=id)\n        serializer = ProductSerializer(product)\n        return Response(serializer.data)",
+        "peekOfCode": "class ProductList(ListCreateAPIView):\n    queryset = Product.objects.select_related(\"collection\").all()\n    serializer_class = ProductSerializer\n    def get_serializer_context(self):\n        return {\"request\": self.request}\nclass ProductDetail(RetrieveUpdateDestroyAPIView):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    def delete(self, request, pk):\n        product = get_object_or_404(Product, pk=pk)",
         "detail": "store.views",
         "documentation": {}
     },
@@ -1089,7 +1097,16 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductDetail(APIView):\n    def get(self, request, id):\n        product = get_object_or_404(Product, pk=id)\n        serializer = ProductSerializer(product)\n        return Response(serializer.data)\n    def put(self, request, id):\n        product = get_object_or_404(Product, pk=id)\n        serializer = ProductSerializer(product, data=request.data)\n        serializer.is_valid(raise_exception=True)\n        serializer.save()",
+        "peekOfCode": "class ProductDetail(RetrieveUpdateDestroyAPIView):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    def delete(self, request, pk):\n        product = get_object_or_404(Product, pk=pk)\n        if product.orderitems.count() > 0:\n            return Response(\n                {\n                    \"error\": \"Product cannot be deleted because it is associated with an order item.\"\n                },",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
+        "label": "CollectionDetail",
+        "kind": 6,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "class CollectionDetail(RetrieveUpdateDestroyAPIView):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\"))\n    serializer_class = CollectionSerializer\n    def delete(self, request, pk):\n        collection = get_object_or_404(Product, pk=pk)\n        if collection.products.count() > 0:\n            return Response(\n                {\n                    \"error\": \"Collection cannot be deleted because it includes one or more products.\"\n                },",
         "detail": "store.views",
         "documentation": {}
     },
@@ -1098,16 +1115,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class CollectionList(ListCreateAPIView):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\")).all()\n    serializer_class = CollectionSerializer\n@api_view([\"GET\", \"PUT\", \"DELETE\"])\ndef collection_detail(request, pk):\n    collection = get_object_or_404(\n        Collection.objects.annotate(products_count=Count(\"products\")), pk=pk\n    )\n    if request.method == \"GET\":\n        serializer = CollectionSerializer(collection)",
-        "detail": "store.views",
-        "documentation": {}
-    },
-    {
-        "label": "collection_detail",
-        "kind": 2,
-        "importPath": "store.views",
-        "description": "store.views",
-        "peekOfCode": "def collection_detail(request, pk):\n    collection = get_object_or_404(\n        Collection.objects.annotate(products_count=Count(\"products\")), pk=pk\n    )\n    if request.method == \"GET\":\n        serializer = CollectionSerializer(collection)\n        return Response(serializer.data)\n    elif request.method == \"PUT\":\n        serializer = CollectionSerializer(collection, data=request.data)\n        serializer.is_valid(raise_exception=True)",
+        "peekOfCode": "class CollectionList(ListCreateAPIView):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\")).all()\n    serializer_class = CollectionSerializer",
         "detail": "store.views",
         "documentation": {}
     },
