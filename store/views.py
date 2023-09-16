@@ -7,8 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework import status
-from .models import Collection, Product, OrderItem
-from .serializers import CollectionSerializer, ProductSerializer
+from .models import Collection, Product, OrderItem, Review
+from .serializers import CollectionSerializer, ProductSerializer, ReviewSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -33,6 +33,16 @@ class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(products_count=Count("products"))
     serializer_class = CollectionSerializer
 
+    def destroy(self, request, *args, **kwargs):
+        if OrderItem.objects.filter(product_id=kwargs["pk"]).count() > 0:
+            return Response(
+                {
+                    "error": "Collection cannot be deleted because it includes one or more products."
+                },
+                status=status.HTTP_405_METHOD_NOT_ALLOWED,
+            )
+        return super().destroy(request, *args, **kwargs)
+
     def delete(self, request, pk):
         collection = get_object_or_404(Product, pk=pk)
         if collection.products.count() > 0:
@@ -47,3 +57,8 @@ class CollectionViewSet(ModelViewSet):
 
     queryset = Collection.objects.annotate(products_count=Count("products")).all()
     serializer_class = CollectionSerializer
+
+
+class ReviewViewSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
