@@ -473,14 +473,6 @@
         "documentation": {}
     },
     {
-        "label": "HttpResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
         "label": "ObjectDoesNotExist",
         "importPath": "django.core.exceptions",
         "description": "django.core.exceptions",
@@ -754,19 +746,11 @@
         "documentation": {}
     },
     {
-        "label": "ListCreateAPIView",
-        "importPath": "rest_framework.generics",
-        "description": "rest_framework.generics",
+        "label": "SearchFilter",
+        "importPath": "rest_framework.filters",
+        "description": "rest_framework.filters",
         "isExtraImport": true,
-        "detail": "rest_framework.generics",
-        "documentation": {}
-    },
-    {
-        "label": "RetrieveUpdateDestroyAPIView",
-        "importPath": "rest_framework.generics",
-        "description": "rest_framework.generics",
-        "isExtraImport": true,
-        "detail": "rest_framework.generics",
+        "detail": "rest_framework.filters",
         "documentation": {}
     },
     {
@@ -786,23 +770,7 @@
         "documentation": {}
     },
     {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
-        "isExtraImport": true,
-        "detail": "rest_framework.views",
-        "documentation": {}
-    },
-    {
         "label": "ModelViewSet",
-        "importPath": "rest_framework.viewsets",
-        "description": "rest_framework.viewsets",
-        "isExtraImport": true,
-        "detail": "rest_framework.viewsets",
-        "documentation": {}
-    },
-    {
-        "label": "ReadOnlyModelViewSet",
         "importPath": "rest_framework.viewsets",
         "description": "rest_framework.viewsets",
         "isExtraImport": true,
@@ -1231,7 +1199,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend]\n    filterset_class = ProductFilter\n    def get_serializer_context(self):\n        return {\"request\": self.request}\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:\n            return Response(",
+        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend, SearchFilter]\n    filterset_class = ProductFilter\n    search_fields = [\"title\", \"description\"]\n    def get_serializer_context(self):\n        return {\"request\": self.request}\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:",
         "detail": "store.views",
         "documentation": {}
     },
