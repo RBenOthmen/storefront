@@ -698,6 +698,22 @@
         "documentation": {}
     },
     {
+        "label": "FilterSet",
+        "importPath": "django_filters.rest_framework",
+        "description": "django_filters.rest_framework",
+        "isExtraImport": true,
+        "detail": "django_filters.rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "DjangoFilterBackend",
+        "importPath": "django_filters.rest_framework",
+        "description": "django_filters.rest_framework",
+        "isExtraImport": true,
+        "detail": "django_filters.rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -735,14 +751,6 @@
         "description": "rest_framework_nested",
         "isExtraImport": true,
         "detail": "rest_framework_nested",
-        "documentation": {}
-    },
-    {
-        "label": "DjangoFilterBackend",
-        "importPath": "django_filters.rest_framework",
-        "description": "django_filters.rest_framework",
-        "isExtraImport": true,
-        "detail": "django_filters.rest_framework",
         "documentation": {}
     },
     {
@@ -799,6 +807,14 @@
         "description": "rest_framework.viewsets",
         "isExtraImport": true,
         "detail": "rest_framework.viewsets",
+        "documentation": {}
+    },
+    {
+        "label": "ProductFilter",
+        "importPath": "store.filters",
+        "description": "store.filters",
+        "isExtraImport": true,
+        "detail": "store.filters",
         "documentation": {}
     },
     {
@@ -1058,6 +1074,15 @@
         "documentation": {}
     },
     {
+        "label": "ProductFilter",
+        "kind": 6,
+        "importPath": "store.filters",
+        "description": "store.filters",
+        "peekOfCode": "class ProductFilter(FilterSet):\n    class Meta:\n        model = Product\n        fields = {\"collection_id\": [\"exact\"], \"unit_price\": [\"gt\", \"lt\"]}",
+        "detail": "store.filters",
+        "documentation": {}
+    },
+    {
         "label": "Promotion",
         "kind": 6,
         "importPath": "store.models",
@@ -1206,7 +1231,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend]\n    filterset_fields = [\"collection_id\"]\n    def get_serializer_context(self):\n        return {\"request\": self.request}\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:\n            return Response(",
+        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend]\n    filterset_class = ProductFilter\n    def get_serializer_context(self):\n        return {\"request\": self.request}\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:\n            return Response(",
         "detail": "store.views",
         "documentation": {}
     },
