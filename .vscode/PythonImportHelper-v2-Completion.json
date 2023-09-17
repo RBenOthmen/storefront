@@ -706,6 +706,14 @@
         "documentation": {}
     },
     {
+        "label": "PageNumberPagination",
+        "importPath": "rest_framework.pagination",
+        "description": "rest_framework.pagination",
+        "isExtraImport": true,
+        "detail": "rest_framework.pagination",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -778,11 +786,11 @@
         "documentation": {}
     },
     {
-        "label": "ProductFilter",
-        "importPath": "store.filters",
-        "description": "store.filters",
+        "label": "DefaultPagination",
+        "importPath": "store.pagination",
+        "description": "store.pagination",
         "isExtraImport": true,
-        "detail": "store.filters",
+        "detail": "store.pagination",
         "documentation": {}
     },
     {
@@ -1141,6 +1149,15 @@
         "documentation": {}
     },
     {
+        "label": "DefaultPagination",
+        "kind": 6,
+        "importPath": "store.pagination",
+        "description": "store.pagination",
+        "peekOfCode": "class DefaultPagination(PageNumberPagination):\n    page_size = 10",
+        "detail": "store.pagination",
+        "documentation": {}
+    },
+    {
         "label": "CollectionSerializer",
         "kind": 6,
         "importPath": "store.serializers",
@@ -1199,7 +1216,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]\n    filterset_class = ProductFilter\n    search_fields = [\"title\", \"description\"]\n    ordering_fields = [\"unit_price\", \"last_update\"]\n    def get_serializer_context(self):\n        return {\"request\": self.request}\n    def destroy(self, request, *args, **kwargs):",
+        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]\n    filterset_class = ProductFilter\n    pagination_class = DefaultPagination\n    search_fields = [\"title\", \"description\"]\n    ordering_fields = [\"unit_price\", \"last_update\"]\n    def get_serializer_context(self):\n        return {\"request\": self.request}",
         "detail": "store.views",
         "documentation": {}
     },
