@@ -136,6 +136,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -609,11 +625,36 @@
         "documentation": {}
     },
     {
+        "label": "Review",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "Product",
         "importPath": "store.models",
         "description": "store.models",
         "isExtraImport": true,
         "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.core.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
+        "label": "MinValueValidator",
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "isExtraImport": true,
+        "detail": "django.core.validators",
         "documentation": {}
     },
     {
@@ -657,14 +698,6 @@
         "documentation": {}
     },
     {
-        "label": "MinValueValidator",
-        "importPath": "django.core.validators",
-        "description": "django.core.validators",
-        "isExtraImport": true,
-        "detail": "django.core.validators",
-        "documentation": {}
-    },
-    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -686,6 +719,30 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls.conf",
+        "description": "django.urls.conf",
+        "isExtraImport": true,
+        "detail": "django.urls.conf",
+        "documentation": {}
+    },
+    {
+        "label": "routers",
+        "importPath": "rest_framework_nested",
+        "description": "rest_framework_nested",
+        "isExtraImport": true,
+        "detail": "rest_framework_nested",
+        "documentation": {}
+    },
+    {
+        "label": "DjangoFilterBackend",
+        "importPath": "django_filters.rest_framework",
+        "description": "django_filters.rest_framework",
+        "isExtraImport": true,
+        "detail": "django_filters.rest_framework",
         "documentation": {}
     },
     {
@@ -726,6 +783,22 @@
         "description": "rest_framework.views",
         "isExtraImport": true,
         "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "ModelViewSet",
+        "importPath": "rest_framework.viewsets",
+        "description": "rest_framework.viewsets",
+        "isExtraImport": true,
+        "detail": "rest_framework.viewsets",
+        "documentation": {}
+    },
+    {
+        "label": "ReadOnlyModelViewSet",
+        "importPath": "rest_framework.viewsets",
+        "description": "rest_framework.viewsets",
+        "isExtraImport": true,
+        "detail": "rest_framework.viewsets",
         "documentation": {}
     },
     {
@@ -913,6 +986,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "store.migrations.0008_alter_orderitem_product_alter_product_collection_and_more",
+        "description": "store.migrations.0008_alter_orderitem_product_alter_product_collection_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('store', '0007_alter_collection_options_alter_customer_options_and_more'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='orderitem',\n            name='product',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='orderitems', to='store.product'),\n        ),",
+        "detail": "store.migrations.0008_alter_orderitem_product_alter_product_collection_and_more",
+        "documentation": {}
+    },
+    {
         "label": "InventoryFilter",
         "kind": 6,
         "importPath": "store.admin",
@@ -1043,7 +1125,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Cart(models.Model):\n    created_at = models.DateTimeField(auto_now_add=True)\nclass CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()",
+        "peekOfCode": "class Cart(models.Model):\n    created_at = models.DateTimeField(auto_now_add=True)\nclass CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()\nclass Review(models.Model):\n    product = models.ForeignKey(\n        Product, on_delete=models.CASCADE, related_name=\"reviews\"\n    )",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1052,7 +1134,16 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()",
+        "peekOfCode": "class CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()\nclass Review(models.Model):\n    product = models.ForeignKey(\n        Product, on_delete=models.CASCADE, related_name=\"reviews\"\n    )\n    name = models.CharField(max_length=255)\n    description = models.TextField()",
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Review",
+        "kind": 6,
+        "importPath": "store.models",
+        "description": "store.models",
+        "peekOfCode": "class Review(models.Model):\n    product = models.ForeignKey(\n        Product, on_delete=models.CASCADE, related_name=\"reviews\"\n    )\n    name = models.CharField(max_length=255)\n    description = models.TextField()\n    date = models.DateField(auto_now_add=True)",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1075,47 +1166,65 @@
         "documentation": {}
     },
     {
-        "label": "urlpatterns",
+        "label": "ReviewSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class ReviewSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Review\n        fields = [\"id\", \"date\", \"name\", \"description\"]\n    def create(self, validated_data):\n        product_id = self.context['product_id']\n        return Review.objects.create(product_id=product_id, **validated_data)",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "router",
         "kind": 5,
         "importPath": "store.urls",
         "description": "store.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"products/\", views.ProductList.as_view()),\n    path(\"products/<int:pk>/\", views.ProductDetail.as_view()),\n    path(\"collections/\", views.CollectionList.as_view()),\n    path(\"collections/<int:pk>/\", views.CollectionDetail.as_view()),\n]",
+        "peekOfCode": "router = routers.DefaultRouter()\nrouter.register(\"products\", views.ProductViewSet, basename=\"products\")\nrouter.register(\"collections\", views.CollectionViewSet)\nproducts_router = routers.NestedDefaultRouter(router, \"products\", lookup=\"product\")\nproducts_router.register(\"reviews\", views.ReviewViewSet, basename=\"product-reviews\")\n# URLConf\nurlpatterns = router.urls + products_router.urls",
         "detail": "store.urls",
         "documentation": {}
     },
     {
-        "label": "ProductList",
+        "label": "products_router",
+        "kind": 5,
+        "importPath": "store.urls",
+        "description": "store.urls",
+        "peekOfCode": "products_router = routers.NestedDefaultRouter(router, \"products\", lookup=\"product\")\nproducts_router.register(\"reviews\", views.ReviewViewSet, basename=\"product-reviews\")\n# URLConf\nurlpatterns = router.urls + products_router.urls",
+        "detail": "store.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "store.urls",
+        "description": "store.urls",
+        "peekOfCode": "urlpatterns = router.urls + products_router.urls",
+        "detail": "store.urls",
+        "documentation": {}
+    },
+    {
+        "label": "ProductViewSet",
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductList(ListCreateAPIView):\n    queryset = Product.objects.select_related(\"collection\").all()\n    serializer_class = ProductSerializer\n    def get_serializer_context(self):\n        return {\"request\": self.request}\nclass ProductDetail(RetrieveUpdateDestroyAPIView):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    def delete(self, request, pk):\n        product = get_object_or_404(Product, pk=pk)",
+        "peekOfCode": "class ProductViewSet(ModelViewSet):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    filter_backends = [DjangoFilterBackend]\n    filterset_fields = [\"collection_id\"]\n    def get_serializer_context(self):\n        return {\"request\": self.request}\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:\n            return Response(",
         "detail": "store.views",
         "documentation": {}
     },
     {
-        "label": "ProductDetail",
+        "label": "CollectionViewSet",
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ProductDetail(RetrieveUpdateDestroyAPIView):\n    queryset = Product.objects.all()\n    serializer_class = ProductSerializer\n    def delete(self, request, pk):\n        product = get_object_or_404(Product, pk=pk)\n        if product.orderitems.count() > 0:\n            return Response(\n                {\n                    \"error\": \"Product cannot be deleted because it is associated with an order item.\"\n                },",
+        "peekOfCode": "class CollectionViewSet(ModelViewSet):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\"))\n    serializer_class = CollectionSerializer\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:\n            return Response(\n                {\n                    \"error\": \"Collection cannot be deleted because it includes one or more products.\"\n                },\n                status=status.HTTP_405_METHOD_NOT_ALLOWED,",
         "detail": "store.views",
         "documentation": {}
     },
     {
-        "label": "CollectionDetail",
+        "label": "ReviewViewSet",
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class CollectionDetail(RetrieveUpdateDestroyAPIView):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\"))\n    serializer_class = CollectionSerializer\n    def delete(self, request, pk):\n        collection = get_object_or_404(Product, pk=pk)\n        if collection.products.count() > 0:\n            return Response(\n                {\n                    \"error\": \"Collection cannot be deleted because it includes one or more products.\"\n                },",
-        "detail": "store.views",
-        "documentation": {}
-    },
-    {
-        "label": "CollectionList",
-        "kind": 6,
-        "importPath": "store.views",
-        "description": "store.views",
-        "peekOfCode": "class CollectionList(ListCreateAPIView):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\")).all()\n    serializer_class = CollectionSerializer",
+        "peekOfCode": "class ReviewViewSet(ModelViewSet):\n    serializer_class = ReviewSerializer\n    def get_queryset(self):\n        return Review.objects.filter(product_id=self.kwargs[\"product_pk\"])\n    def get_serializer_context(self):\n        return {\"product_id\": self.kwargs[\"product_pk\"]}",
         "detail": "store.views",
         "documentation": {}
     },
@@ -1160,7 +1269,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"rest_framework\",",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"django_filters\",",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1169,7 +1278,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"rest_framework\",\n    \"playground\",\n    \"debug_toolbar\",",
+        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"django_filters\",\n    \"rest_framework\",\n    \"playground\",",
         "detail": "storefront.settings",
         "documentation": {}
     },
