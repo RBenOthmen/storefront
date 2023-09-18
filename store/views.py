@@ -2,13 +2,19 @@ from django.db.models.aggregates import Count
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.mixins import CreateModelMixin
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework import status
 from store.pagination import DefaultPagination
 from .filters import ProductFilter
-from .models import Collection, Product, OrderItem, Review
-from .serializers import CollectionSerializer, ProductSerializer, ReviewSerializer
+from .models import Collection, Product, OrderItem, Review, Cart
+from .serializers import (
+    CollectionSerializer,
+    ProductSerializer,
+    ReviewSerializer,
+    CartSerializer,
+)
 
 
 class ProductViewSet(ModelViewSet):
@@ -32,6 +38,11 @@ class ProductViewSet(ModelViewSet):
                 status=status.HTTP_405_METHOD_NOT_ALLOWED,
             )
         return super().destroy(request, *args, **kwargs)
+
+
+class CartViewSet(CreateModelMixin, GenericViewSet):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
 
 
 class CollectionViewSet(ModelViewSet):
