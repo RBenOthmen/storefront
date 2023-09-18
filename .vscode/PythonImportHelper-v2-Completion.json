@@ -152,6 +152,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -601,6 +633,22 @@
         "documentation": {}
     },
     {
+        "label": "Cart",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "CartItem",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "Product",
         "importPath": "store.models",
         "description": "store.models",
@@ -647,6 +695,23 @@
         "description": "django.core.validators",
         "isExtraImport": true,
         "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
         "documentation": {}
     },
     {
@@ -754,6 +819,14 @@
         "documentation": {}
     },
     {
+        "label": "DefaultPagination",
+        "importPath": "store.pagination",
+        "description": "store.pagination",
+        "isExtraImport": true,
+        "detail": "store.pagination",
+        "documentation": {}
+    },
+    {
         "label": "SearchFilter",
         "importPath": "rest_framework.filters",
         "description": "rest_framework.filters",
@@ -767,6 +840,30 @@
         "description": "rest_framework.filters",
         "isExtraImport": true,
         "detail": "rest_framework.filters",
+        "documentation": {}
+    },
+    {
+        "label": "CreateModelMixin",
+        "importPath": "rest_framework.mixins",
+        "description": "rest_framework.mixins",
+        "isExtraImport": true,
+        "detail": "rest_framework.mixins",
+        "documentation": {}
+    },
+    {
+        "label": "DestroyModelMixin",
+        "importPath": "rest_framework.mixins",
+        "description": "rest_framework.mixins",
+        "isExtraImport": true,
+        "detail": "rest_framework.mixins",
+        "documentation": {}
+    },
+    {
+        "label": "RetrieveModelMixin",
+        "importPath": "rest_framework.mixins",
+        "description": "rest_framework.mixins",
+        "isExtraImport": true,
+        "detail": "rest_framework.mixins",
         "documentation": {}
     },
     {
@@ -786,11 +883,11 @@
         "documentation": {}
     },
     {
-        "label": "DefaultPagination",
-        "importPath": "store.pagination",
-        "description": "store.pagination",
+        "label": "GenericViewSet",
+        "importPath": "rest_framework.viewsets",
+        "description": "rest_framework.viewsets",
         "isExtraImport": true,
-        "detail": "store.pagination",
+        "detail": "rest_framework.viewsets",
         "documentation": {}
     },
     {
@@ -987,6 +1084,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "store.migrations.0009_alter_cart_id",
+        "description": "store.migrations.0009_alter_cart_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('store', '0008_alter_orderitem_product_alter_product_collection_and_more'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='cart',\n            name='id',\n            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False),\n        ),",
+        "detail": "store.migrations.0009_alter_cart_id",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "store.migrations.0010_alter_cartitem_cart_alter_cartitem_unique_together",
+        "description": "store.migrations.0010_alter_cartitem_cart_alter_cartitem_unique_together",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('store', '0009_alter_cart_id'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='cartitem',\n            name='cart',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='store.cart'),\n        ),",
+        "detail": "store.migrations.0010_alter_cartitem_cart_alter_cartitem_unique_together",
+        "documentation": {}
+    },
+    {
         "label": "InventoryFilter",
         "kind": 6,
         "importPath": "store.admin",
@@ -1059,6 +1174,15 @@
         "documentation": {}
     },
     {
+        "label": "Cart",
+        "kind": 6,
+        "importPath": "store.models",
+        "description": "store.models",
+        "peekOfCode": "class Cart(models.Model):\n    id = models.UUIDField(primary_key=True, default=uuid4)\n    created_at = models.DateTimeField(auto_now_add=True)\nclass Promotion(models.Model):\n    description = models.CharField(max_length=255)\n    discount = models.FloatField()\nclass Collection(models.Model):\n    title = models.CharField(max_length=255)\n    featured_product = models.ForeignKey(\n        \"Product\", on_delete=models.SET_NULL, null=True, related_name=\"+\"",
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
         "label": "Promotion",
         "kind": 6,
         "importPath": "store.models",
@@ -1117,16 +1241,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Address(models.Model):\n    street = models.CharField(max_length=255)\n    city = models.CharField(max_length=255)\n    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)\nclass Cart(models.Model):\n    created_at = models.DateTimeField(auto_now_add=True)\nclass CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()",
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Cart",
-        "kind": 6,
-        "importPath": "store.models",
-        "description": "store.models",
-        "peekOfCode": "class Cart(models.Model):\n    created_at = models.DateTimeField(auto_now_add=True)\nclass CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()\nclass Review(models.Model):\n    product = models.ForeignKey(\n        Product, on_delete=models.CASCADE, related_name=\"reviews\"\n    )",
+        "peekOfCode": "class Address(models.Model):\n    street = models.CharField(max_length=255)\n    city = models.CharField(max_length=255)\n    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)\nclass CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name=\"items\")\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()\n    class Meta:\n        unique_together = [[\"cart\", \"product\"]]",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1135,7 +1250,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()\nclass Review(models.Model):\n    product = models.ForeignKey(\n        Product, on_delete=models.CASCADE, related_name=\"reviews\"\n    )\n    name = models.CharField(max_length=255)\n    description = models.TextField()",
+        "peekOfCode": "class CartItem(models.Model):\n    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name=\"items\")\n    product = models.ForeignKey(Product, on_delete=models.CASCADE)\n    quantity = models.PositiveSmallIntegerField()\n    class Meta:\n        unique_together = [[\"cart\", \"product\"]]\nclass Review(models.Model):\n    product = models.ForeignKey(\n        Product, on_delete=models.CASCADE, related_name=\"reviews\"\n    )",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1180,7 +1295,52 @@
         "kind": 6,
         "importPath": "store.serializers",
         "description": "store.serializers",
-        "peekOfCode": "class ReviewSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Review\n        fields = [\"id\", \"date\", \"name\", \"description\"]\n    def create(self, validated_data):\n        product_id = self.context['product_id']\n        return Review.objects.create(product_id=product_id, **validated_data)",
+        "peekOfCode": "class ReviewSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Review\n        fields = [\"id\", \"date\", \"name\", \"description\"]\n    def create(self, validated_data):\n        product_id = self.context[\"product_id\"]\n        return Review.objects.create(product_id=product_id, **validated_data)\nclass SimpleProductSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Product",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "SimpleProductSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class SimpleProductSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Product\n        fields = [\"id\", \"title\", \"unit_price\"]\nclass CartItemSerializer(serializers.ModelSerializer):\n    product = SimpleProductSerializer()\n    total_price = serializers.SerializerMethodField()\n    def get_total_price(self, cart_item: CartItem):\n        return cart_item.quantity * cart_item.product.unit_price\n    class Meta:",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CartItemSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class CartItemSerializer(serializers.ModelSerializer):\n    product = SimpleProductSerializer()\n    total_price = serializers.SerializerMethodField()\n    def get_total_price(self, cart_item: CartItem):\n        return cart_item.quantity * cart_item.product.unit_price\n    class Meta:\n        model = CartItem\n        fields = [\"id\", \"product\", \"quantity\", \"total_price\"]\nclass CartSerializer(serializers.ModelSerializer):\n    id = serializers.UUIDField(read_only=True)",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CartSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class CartSerializer(serializers.ModelSerializer):\n    id = serializers.UUIDField(read_only=True)\n    items = CartItemSerializer(many=True, read_only=True)\n    total_price = serializers.SerializerMethodField()\n    def get_total_price(self, cart):\n        return sum(\n            [item.quantity * item.product.unit_price for item in cart.items.all()]\n        )\n    class Meta:\n        model = Cart",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "AddCartItemSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class AddCartItemSerializer(serializers.ModelSerializer):\n    product_id = serializers.IntegerField()\n    def validate_product_id(self, value):\n        if not Product.objects.filter(pk=value).exists():\n            raise serializers.ValidationError(\"No product with the given ID was found.\")\n        return value\n    def save(self, **kwargs):\n        cart_id = self.context[\"cart_id\"]\n        product_id = self.validated_data[\"product_id\"]\n        quantity = self.validated_data[\"quantity\"]",
+        "detail": "store.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateCartItemSerializer",
+        "kind": 6,
+        "importPath": "store.serializers",
+        "description": "store.serializers",
+        "peekOfCode": "class UpdateCartItemSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CartItem\n        fields = [\"quantity\"]",
         "detail": "store.serializers",
         "documentation": {}
     },
@@ -1189,7 +1349,7 @@
         "kind": 5,
         "importPath": "store.urls",
         "description": "store.urls",
-        "peekOfCode": "router = routers.DefaultRouter()\nrouter.register(\"products\", views.ProductViewSet, basename=\"products\")\nrouter.register(\"collections\", views.CollectionViewSet)\nproducts_router = routers.NestedDefaultRouter(router, \"products\", lookup=\"product\")\nproducts_router.register(\"reviews\", views.ReviewViewSet, basename=\"product-reviews\")\n# URLConf\nurlpatterns = router.urls + products_router.urls",
+        "peekOfCode": "router = routers.DefaultRouter()\nrouter.register(\"products\", views.ProductViewSet, basename=\"products\")\nrouter.register(\"collections\", views.CollectionViewSet)\nrouter.register(\"carts\", views.CartViewSet)\nproducts_router = routers.NestedDefaultRouter(router, \"products\", lookup=\"product\")\nproducts_router.register(\"reviews\", views.ReviewViewSet, basename=\"product-reviews\")\ncarts_router = routers.NestedDefaultRouter(router, \"carts\", lookup=\"cart\")\ncarts_router.register(\"items\", views.CartItemViewSet, basename=\"cart-items\")\n# URLConf\nurlpatterns = router.urls + products_router.urls + carts_router.urls",
         "detail": "store.urls",
         "documentation": {}
     },
@@ -1198,7 +1358,16 @@
         "kind": 5,
         "importPath": "store.urls",
         "description": "store.urls",
-        "peekOfCode": "products_router = routers.NestedDefaultRouter(router, \"products\", lookup=\"product\")\nproducts_router.register(\"reviews\", views.ReviewViewSet, basename=\"product-reviews\")\n# URLConf\nurlpatterns = router.urls + products_router.urls",
+        "peekOfCode": "products_router = routers.NestedDefaultRouter(router, \"products\", lookup=\"product\")\nproducts_router.register(\"reviews\", views.ReviewViewSet, basename=\"product-reviews\")\ncarts_router = routers.NestedDefaultRouter(router, \"carts\", lookup=\"cart\")\ncarts_router.register(\"items\", views.CartItemViewSet, basename=\"cart-items\")\n# URLConf\nurlpatterns = router.urls + products_router.urls + carts_router.urls",
+        "detail": "store.urls",
+        "documentation": {}
+    },
+    {
+        "label": "carts_router",
+        "kind": 5,
+        "importPath": "store.urls",
+        "description": "store.urls",
+        "peekOfCode": "carts_router = routers.NestedDefaultRouter(router, \"carts\", lookup=\"cart\")\ncarts_router.register(\"items\", views.CartItemViewSet, basename=\"cart-items\")\n# URLConf\nurlpatterns = router.urls + products_router.urls + carts_router.urls",
         "detail": "store.urls",
         "documentation": {}
     },
@@ -1207,7 +1376,7 @@
         "kind": 5,
         "importPath": "store.urls",
         "description": "store.urls",
-        "peekOfCode": "urlpatterns = router.urls + products_router.urls",
+        "peekOfCode": "urlpatterns = router.urls + products_router.urls + carts_router.urls",
         "detail": "store.urls",
         "documentation": {}
     },
@@ -1225,7 +1394,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class CollectionViewSet(ModelViewSet):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\"))\n    serializer_class = CollectionSerializer\n    def destroy(self, request, *args, **kwargs):\n        if OrderItem.objects.filter(product_id=kwargs[\"pk\"]).count() > 0:\n            return Response(\n                {\n                    \"error\": \"Collection cannot be deleted because it includes one or more products.\"\n                },\n                status=status.HTTP_405_METHOD_NOT_ALLOWED,",
+        "peekOfCode": "class CollectionViewSet(ModelViewSet):\n    queryset = Collection.objects.annotate(products_count=Count(\"products\")).all()\n    serializer_class = CollectionSerializer\n    def delete(self, request, pk):\n        collection = get_object_or_404(Collection, pk=pk)\n        if collection.products.count() > 0:\n            return Response(\n                {\n                    \"error\": \"Collection cannot be deleted because it includes one or more products.\"\n                },",
         "detail": "store.views",
         "documentation": {}
     },
@@ -1234,7 +1403,25 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class ReviewViewSet(ModelViewSet):\n    serializer_class = ReviewSerializer\n    def get_queryset(self):\n        return Review.objects.filter(product_id=self.kwargs[\"product_pk\"])\n    def get_serializer_context(self):\n        return {\"product_id\": self.kwargs[\"product_pk\"]}",
+        "peekOfCode": "class ReviewViewSet(ModelViewSet):\n    serializer_class = ReviewSerializer\n    def get_queryset(self):\n        return Review.objects.filter(product_id=self.kwargs[\"product_pk\"])\n    def get_serializer_context(self):\n        return {\"product_id\": self.kwargs[\"product_pk\"]}\nclass CartViewSet(\n    CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, GenericViewSet\n):\n    queryset = Cart.objects.prefetch_related(\"items__product\").all()",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
+        "label": "CartViewSet",
+        "kind": 6,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "class CartViewSet(\n    CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, GenericViewSet\n):\n    queryset = Cart.objects.prefetch_related(\"items__product\").all()\n    serializer_class = CartSerializer\nclass CartItemViewSet(ModelViewSet):\n    http_method_names = [\"get\", \"post\", \"patch\", \"delete\"]\n    def get_serializer_class(self):\n        if self.request.method == \"POST\":\n            return AddCartItemSerializer",
+        "detail": "store.views",
+        "documentation": {}
+    },
+    {
+        "label": "CartItemViewSet",
+        "kind": 6,
+        "importPath": "store.views",
+        "description": "store.views",
+        "peekOfCode": "class CartItemViewSet(ModelViewSet):\n    http_method_names = [\"get\", \"post\", \"patch\", \"delete\"]\n    def get_serializer_class(self):\n        if self.request.method == \"POST\":\n            return AddCartItemSerializer\n        elif self.request.method == \"PATCH\":\n            return UpdateCartItemSerializer\n        return CartItemSerializer\n    def get_serializer_context(self):\n        return {\"cart_id\": self.kwargs[\"cart_pk\"]}",
         "detail": "store.views",
         "documentation": {}
     },
