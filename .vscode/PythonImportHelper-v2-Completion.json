@@ -1,10 +1,52 @@
 [
     {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
+        "label": "django.contrib.auth.models",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "django.conf",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.validators",
+        "description": "django.contrib.auth.validators",
+        "detail": "django.contrib.auth.validators",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
         "documentation": {}
     },
     {
@@ -184,7 +226,23 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -232,12 +290,20 @@
         "documentation": {}
     },
     {
-        "label": "django.db.models.deletion",
+        "label": "django.utils.timezone",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "django.db.models.deletion",
-        "description": "django.db.models.deletion",
-        "detail": "django.db.models.deletion",
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -297,83 +363,171 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "ProductAdmin",
+        "importPath": "store.admin",
+        "description": "store.admin",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "store.admin",
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "TaggedItem",
+        "importPath": "tags.models",
+        "description": "tags.models",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "tags.models",
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "TaggedItem",
+        "importPath": "tags.models",
+        "description": "tags.models",
         "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
-        "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
-        "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
+        "detail": "tags.models",
         "documentation": {}
     },
     {
         "label": "ContentType",
-        "importPath": "django.contrib.contenttypes.models",
-        "description": "django.contrib.contenttypes.models",
+        "importPath": "tags.models",
+        "description": "tags.models",
         "isExtraImport": true,
-        "detail": "django.contrib.contenttypes.models",
+        "detail": "tags.models",
         "documentation": {}
     },
     {
-        "label": "ContentType",
-        "importPath": "django.contrib.contenttypes.models",
-        "description": "django.contrib.contenttypes.models",
+        "label": "GenericTabularInline",
+        "importPath": "django.contrib.contenttypes.admin",
+        "description": "django.contrib.contenttypes.admin",
         "isExtraImport": true,
-        "detail": "django.contrib.contenttypes.models",
+        "detail": "django.contrib.contenttypes.admin",
         "documentation": {}
     },
     {
-        "label": "GenericForeignKey",
-        "importPath": "django.contrib.contenttypes.fields",
-        "description": "django.contrib.contenttypes.fields",
+        "label": "UserAdmin",
+        "importPath": "django.contrib.auth.admin",
+        "description": "django.contrib.auth.admin",
         "isExtraImport": true,
-        "detail": "django.contrib.contenttypes.fields",
+        "detail": "django.contrib.auth.admin",
         "documentation": {}
     },
     {
-        "label": "GenericForeignKey",
-        "importPath": "django.contrib.contenttypes.fields",
-        "description": "django.contrib.contenttypes.fields",
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
         "isExtraImport": true,
-        "detail": "django.contrib.contenttypes.fields",
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Collection",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Order",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "OrderItem",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Cart",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "CartItem",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Collection",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "Review",
+        "importPath": "store.models",
+        "description": "store.models",
+        "isExtraImport": true,
+        "detail": "store.models",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
         "documentation": {}
     },
     {
@@ -414,6 +568,14 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -449,11 +611,76 @@
         "documentation": {}
     },
     {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
         "isExtraImport": true,
-        "detail": "django.shortcuts",
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "ContentType",
+        "importPath": "django.contrib.contenttypes.models",
+        "description": "django.contrib.contenttypes.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.contenttypes.models",
+        "documentation": {}
+    },
+    {
+        "label": "ContentType",
+        "importPath": "django.contrib.contenttypes.models",
+        "description": "django.contrib.contenttypes.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.contenttypes.models",
+        "documentation": {}
+    },
+    {
+        "label": "GenericForeignKey",
+        "importPath": "django.contrib.contenttypes.fields",
+        "description": "django.contrib.contenttypes.fields",
+        "isExtraImport": true,
+        "detail": "django.contrib.contenttypes.fields",
+        "documentation": {}
+    },
+    {
+        "label": "GenericForeignKey",
+        "importPath": "django.contrib.contenttypes.fields",
+        "description": "django.contrib.contenttypes.fields",
+        "isExtraImport": true,
+        "detail": "django.contrib.contenttypes.fields",
         "documentation": {}
     },
     {
@@ -574,110 +801,6 @@
         "description": "django.db.models.fields",
         "isExtraImport": true,
         "detail": "django.db.models.fields",
-        "documentation": {}
-    },
-    {
-        "label": "TaggedItem",
-        "importPath": "tags.models",
-        "description": "tags.models",
-        "isExtraImport": true,
-        "detail": "tags.models",
-        "documentation": {}
-    },
-    {
-        "label": "ContentType",
-        "importPath": "tags.models",
-        "description": "tags.models",
-        "isExtraImport": true,
-        "detail": "tags.models",
-        "documentation": {}
-    },
-    {
-        "label": "TaggedItem",
-        "importPath": "tags.models",
-        "description": "tags.models",
-        "isExtraImport": true,
-        "detail": "tags.models",
-        "documentation": {}
-    },
-    {
-        "label": "Product",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Collection",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Order",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "OrderItem",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Cart",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "CartItem",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Product",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Collection",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Review",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
-        "documentation": {}
-    },
-    {
-        "label": "Product",
-        "importPath": "store.models",
-        "description": "store.models",
-        "isExtraImport": true,
-        "detail": "store.models",
         "documentation": {}
     },
     {
@@ -933,28 +1056,66 @@
         "documentation": {}
     },
     {
-        "label": "ProductAdmin",
-        "importPath": "store.admin",
-        "description": "store.admin",
-        "isExtraImport": true,
-        "detail": "store.admin",
-        "documentation": {}
-    },
-    {
-        "label": "GenericTabularInline",
-        "importPath": "django.contrib.contenttypes.admin",
-        "description": "django.contrib.contenttypes.admin",
-        "isExtraImport": true,
-        "detail": "django.contrib.contenttypes.admin",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "sys",
         "description": "sys",
         "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "core.migrations.0001_initial",
+        "description": "core.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='User',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "core.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "UserAdmin",
+        "kind": 6,
+        "importPath": "core.admin",
+        "description": "core.admin",
+        "peekOfCode": "class UserAdmin(BaseUserAdmin):\n    add_fieldsets = (\n        (\n            None,\n            {\n                \"classes\": (\"wide\",),\n                \"fields\": (\n                    \"username\",\n                    \"password1\",\n                    \"password2\",",
+        "detail": "core.admin",
+        "documentation": {}
+    },
+    {
+        "label": "TagInline",
+        "kind": 6,
+        "importPath": "core.admin",
+        "description": "core.admin",
+        "peekOfCode": "class TagInline(GenericTabularInline):\n    autocomplete_fields = [\"tag\"]\n    model = TaggedItem\nclass CustomProductAdmin(ProductAdmin):\n    inlines = [TagInline]\nadmin.site.unregister(Product)\nadmin.site.register(Product, CustomProductAdmin)",
+        "detail": "core.admin",
+        "documentation": {}
+    },
+    {
+        "label": "CustomProductAdmin",
+        "kind": 6,
+        "importPath": "core.admin",
+        "description": "core.admin",
+        "peekOfCode": "class CustomProductAdmin(ProductAdmin):\n    inlines = [TagInline]\nadmin.site.unregister(Product)\nadmin.site.register(Product, CustomProductAdmin)",
+        "detail": "core.admin",
+        "documentation": {}
+    },
+    {
+        "label": "CoreConfig",
+        "kind": 6,
+        "importPath": "core.apps",
+        "description": "core.apps",
+        "peekOfCode": "class CoreConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'core'",
+        "detail": "core.apps",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "core.models",
+        "description": "core.models",
+        "peekOfCode": "class User(AbstractUser):\n    email = models.EmailField(unique=True)",
+        "detail": "core.models",
         "documentation": {}
     },
     {
@@ -980,7 +1141,7 @@
         "kind": 6,
         "importPath": "likes.models",
         "description": "likes.models",
-        "peekOfCode": "class LikedItem(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
+        "peekOfCode": "class LikedItem(models.Model):\n    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey()",
         "detail": "likes.models",
         "documentation": {}
     },
@@ -1102,11 +1263,29 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "store.migrations.0011_alter_customer_options_remove_customer_email_and_more",
+        "description": "store.migrations.0011_alter_customer_options_remove_customer_email_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('store', '0010_alter_cartitem_cart_alter_cartitem_unique_together'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='customer',\n            options={'ordering': ['user__first_name', 'user__last_name']},\n        ),",
+        "detail": "store.migrations.0011_alter_customer_options_remove_customer_email_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "store.migrations.0012_alter_order_options",
+        "description": "store.migrations.0012_alter_order_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('store', '0011_alter_customer_options_remove_customer_email_and_more'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='order',\n            options={'permissions': [('cancel_order', 'Can cancel order')]},\n        ),\n    ]",
+        "detail": "store.migrations.0012_alter_order_options",
+        "documentation": {}
+    },
+    {
         "label": "InventoryFilter",
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = 'inventory'\n    parameter_name = 'inventory'\n    def lookups(self, request, model_admin):\n        return [\n            ('<10', 'Low')\n        ]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == '<10':\n            return queryset.filter(inventory__lt=10)",
+        "peekOfCode": "class InventoryFilter(admin.SimpleListFilter):\n    title = \"inventory\"\n    parameter_name = \"inventory\"\n    def lookups(self, request, model_admin):\n        return [(\"<10\", \"Low\")]\n    def queryset(self, request, queryset: QuerySet):\n        if self.value() == \"<10\":\n            return queryset.filter(inventory__lt=10)\n@admin.register(models.Product)\nclass ProductAdmin(admin.ModelAdmin):",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1115,7 +1294,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['collection']\n    prepopulated_fields = {\n        'slug': ['title']\n    }\n    actions = ['clear_inventory']\n    list_display = ['title', 'unit_price',\n                    'inventory_status', 'collection_title']\n    list_editable = ['unit_price']\n    list_filter = ['collection', 'last_update', InventoryFilter]",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"collection\"]\n    prepopulated_fields = {\"slug\": [\"title\"]}\n    actions = [\"clear_inventory\"]\n    list_display = [\"title\", \"unit_price\", \"inventory_status\", \"collection_title\"]\n    list_editable = [\"unit_price\"]\n    list_filter = [\"collection\", \"last_update\", InventoryFilter]\n    list_per_page = 10\n    list_select_related = [\"collection\"]\n    search_fields = [\"title\"]",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1124,7 +1303,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class CollectionAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['featured_product']\n    list_display = ['title', 'products_count']\n    search_fields = ['title']\n    @admin.display(ordering='products_count')\n    def products_count(self, collection):\n        url = (\n            reverse('admin:store_product_changelist')\n            + '?'\n            + urlencode({",
+        "peekOfCode": "class CollectionAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"featured_product\"]\n    list_display = [\"title\", \"products_count\"]\n    search_fields = [\"title\"]\n    @admin.display(ordering=\"products_count\")\n    def products_count(self, collection):\n        url = (\n            reverse(\"admin:store_product_changelist\")\n            + \"?\"\n            + urlencode({\"collection__id\": str(collection.id)})",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1133,7 +1312,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = ['first_name', 'last_name',  'membership', 'orders']\n    list_editable = ['membership']\n    list_per_page = 10\n    ordering = ['first_name', 'last_name']\n    search_fields = ['first_name__istartswith', 'last_name__istartswith']\n    @admin.display(ordering='orders_count')\n    def orders(self, customer):\n        url = (\n            reverse('admin:store_order_changelist')",
+        "peekOfCode": "class CustomerAdmin(admin.ModelAdmin):\n    list_display = [\"first_name\", \"last_name\", \"membership\", \"orders\"]\n    list_editable = [\"membership\"]\n    list_per_page = 10\n    list_select_related = [\"user\"]\n    ordering = [\"user__first_name\", \"user__last_name\"]\n    search_fields = [\"first_name__istartswith\", \"last_name__istartswith\"]\n    @admin.display(ordering=\"orders_count\")\n    def orders(self, customer):\n        url = (",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1142,7 +1321,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class OrderItemInline(admin.TabularInline):\n    autocomplete_fields = ['product']\n    min_num = 1\n    max_num = 10\n    model = models.OrderItem\n    extra = 0\n@admin.register(models.Order)\nclass OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['customer']\n    inlines = [OrderItemInline]",
+        "peekOfCode": "class OrderItemInline(admin.TabularInline):\n    autocomplete_fields = [\"product\"]\n    min_num = 1\n    max_num = 10\n    model = models.OrderItem\n    extra = 0\n@admin.register(models.Order)\nclass OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    inlines = [OrderItemInline]",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1151,7 +1330,7 @@
         "kind": 6,
         "importPath": "store.admin",
         "description": "store.admin",
-        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = ['customer']\n    inlines = [OrderItemInline]\n    list_display = ['id', 'placed_at', 'customer']",
+        "peekOfCode": "class OrderAdmin(admin.ModelAdmin):\n    autocomplete_fields = [\"customer\"]\n    inlines = [OrderItemInline]\n    list_display = [\"id\", \"placed_at\", \"customer\"]",
         "detail": "store.admin",
         "documentation": {}
     },
@@ -1214,7 +1393,7 @@
         "kind": 6,
         "importPath": "store.models",
         "description": "store.models",
-        "peekOfCode": "class Customer(models.Model):\n    MEMBERSHIP_BRONZE = \"B\"\n    MEMBERSHIP_SILVER = \"S\"\n    MEMBERSHIP_GOLD = \"G\"\n    MEMBERSHIP_CHOICES = [\n        (MEMBERSHIP_BRONZE, \"Bronze\"),\n        (MEMBERSHIP_SILVER, \"Silver\"),\n        (MEMBERSHIP_GOLD, \"Gold\"),\n    ]\n    first_name = models.CharField(max_length=255)",
+        "peekOfCode": "class Customer(models.Model):\n    MEMBERSHIP_BRONZE = \"B\"\n    MEMBERSHIP_SILVER = \"S\"\n    MEMBERSHIP_GOLD = \"G\"\n    MEMBERSHIP_CHOICES = [\n        (MEMBERSHIP_BRONZE, \"Bronze\"),\n        (MEMBERSHIP_SILVER, \"Silver\"),\n        (MEMBERSHIP_GOLD, \"Gold\"),\n    ]\n    phone = models.CharField(max_length=255)",
         "detail": "store.models",
         "documentation": {}
     },
@@ -1565,7 +1744,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}\nAUTH_USER_MODEL = \"core.User\"",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1574,7 +1753,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}\nAUTH_USER_MODEL = \"core.User\"",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1583,7 +1762,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "STATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}",
+        "peekOfCode": "STATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}\nAUTH_USER_MODEL = \"core.User\"",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1592,7 +1771,7 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nREST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}\nAUTH_USER_MODEL = \"core.User\"",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1601,7 +1780,16 @@
         "kind": 5,
         "importPath": "storefront.settings",
         "description": "storefront.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}",
+        "peekOfCode": "REST_FRAMEWORK = {\"COERCE_DECIMAL_TO_STRING\": False}\nAUTH_USER_MODEL = \"core.User\"",
+        "detail": "storefront.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_USER_MODEL",
+        "kind": 5,
+        "importPath": "storefront.settings",
+        "description": "storefront.settings",
+        "peekOfCode": "AUTH_USER_MODEL = \"core.User\"",
         "detail": "storefront.settings",
         "documentation": {}
     },
@@ -1639,33 +1827,6 @@
         "description": "storefront.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "storefront.wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "TagInline",
-        "kind": 6,
-        "importPath": "store_custom.admin",
-        "description": "store_custom.admin",
-        "peekOfCode": "class TagInline(GenericTabularInline):\n    autocomplete_fields = [\"tag\"]\n    model = TaggedItem\nclass CustomProductAdmin(ProductAdmin):\n    inlines = [TagInline]\nadmin.site.unregister(Product)\nadmin.site.register(Product, CustomProductAdmin)",
-        "detail": "store_custom.admin",
-        "documentation": {}
-    },
-    {
-        "label": "CustomProductAdmin",
-        "kind": 6,
-        "importPath": "store_custom.admin",
-        "description": "store_custom.admin",
-        "peekOfCode": "class CustomProductAdmin(ProductAdmin):\n    inlines = [TagInline]\nadmin.site.unregister(Product)\nadmin.site.register(Product, CustomProductAdmin)",
-        "detail": "store_custom.admin",
-        "documentation": {}
-    },
-    {
-        "label": "StoreCustomConfig",
-        "kind": 6,
-        "importPath": "store_custom.apps",
-        "description": "store_custom.apps",
-        "peekOfCode": "class StoreCustomConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'store_custom'",
-        "detail": "store_custom.apps",
         "documentation": {}
     },
     {
