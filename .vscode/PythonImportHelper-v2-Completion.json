@@ -934,15 +934,16 @@
         "documentation": {}
     },
     {
-        "label": "serializers",
+        "label": "rest_framework",
+        "kind": 6,
+        "isExtraImport": true,
         "importPath": "rest_framework",
         "description": "rest_framework",
-        "isExtraImport": true,
         "detail": "rest_framework",
         "documentation": {}
     },
     {
-        "label": "status",
+        "label": "serializers",
         "importPath": "rest_framework",
         "description": "rest_framework",
         "isExtraImport": true,
@@ -971,6 +972,14 @@
         "description": "store.pagination",
         "isExtraImport": true,
         "detail": "store.pagination",
+        "documentation": {}
+    },
+    {
+        "label": "action",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -1043,6 +1052,14 @@
         "description": "rest_framework.viewsets",
         "isExtraImport": true,
         "detail": "rest_framework.viewsets",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.models",
+        "description": "core.models",
+        "isExtraImport": true,
+        "detail": "core.models",
         "documentation": {}
     },
     {
@@ -1577,7 +1594,7 @@
         "kind": 6,
         "importPath": "store.serializers",
         "description": "store.serializers",
-        "peekOfCode": "class UpdateCartItemSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CartItem\n        fields = [\"quantity\"]\nclass CustomerSerializer(serializers.ModelSerializer):\n    user_id = serializers.IntegerField()\n    class Meta:\n        model = Customer\n        fields = [\"id\", \"user_id\", \"phone\", \"birth_date\", \"membership\"]",
+        "peekOfCode": "class UpdateCartItemSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CartItem\n        fields = [\"quantity\"]\nclass CustomerSerializer(serializers.ModelSerializer):\n    user_id = serializers.IntegerField(read_only=True)\n    class Meta:\n        model = Customer\n        fields = [\"id\", \"user_id\", \"phone\", \"birth_date\", \"membership\"]",
         "detail": "store.serializers",
         "documentation": {}
     },
@@ -1586,7 +1603,7 @@
         "kind": 6,
         "importPath": "store.serializers",
         "description": "store.serializers",
-        "peekOfCode": "class CustomerSerializer(serializers.ModelSerializer):\n    user_id = serializers.IntegerField()\n    class Meta:\n        model = Customer\n        fields = [\"id\", \"user_id\", \"phone\", \"birth_date\", \"membership\"]",
+        "peekOfCode": "class CustomerSerializer(serializers.ModelSerializer):\n    user_id = serializers.IntegerField(read_only=True)\n    class Meta:\n        model = Customer\n        fields = [\"id\", \"user_id\", \"phone\", \"birth_date\", \"membership\"]",
         "detail": "store.serializers",
         "documentation": {}
     },
@@ -1676,7 +1693,7 @@
         "kind": 6,
         "importPath": "store.views",
         "description": "store.views",
-        "peekOfCode": "class CustomerViewSet(\n    CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet\n):\n    queryset = Customer.objects.all()\n    serializer_class = CustomerSerializer",
+        "peekOfCode": "class CustomerViewSet(\n    CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet\n):\n    queryset = Customer.objects.all()\n    serializer_class = CustomerSerializer\n    @action(detail=False, methods=[\"GET\", \"PUT\"])\n    def me(self, request):\n        (customer, created) = Customer.objects.get_or_create(user_id=request.user.id)\n        if request.method == \"GET\":\n            serializer = CustomerSerializer(customer)",
         "detail": "store.views",
         "documentation": {}
     },
