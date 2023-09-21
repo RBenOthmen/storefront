@@ -28,7 +28,7 @@ from .serializers import (
     UpdateCartItemSerializer,
     CustomerSerializer,
 )
-from .permissions import IsAdminOrReadOnly
+from .permissions import IsAdminOrReadOnly, ViewCustomerHistoryPermission
 
 
 class ProductViewSet(ModelViewSet):
@@ -122,6 +122,10 @@ class CustomerViewSet(
         if self.request.method == "GET":
             return [AllowAny()]
         return [IsAuthenticated()]
+
+    @action(detail=True, permission_classes=[ViewCustomerHistoryPermission])
+    def history(self, request, pk):
+        return Response("ok")
 
     @action(detail=False, methods=["GET", "PUT"], permission_classes=[IsAuthenticated])
     def me(self, request):
