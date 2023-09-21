@@ -10,10 +10,12 @@ from rest_framework.mixins import (
     RetrieveModelMixin,
     UpdateModelMixin,
 )
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 import rest_framework
 from core.models import User
+from rest_framework import status
 from .filters import ProductFilter
 from .models import Cart, CartItem, Collection, Product, Review, Customer
 from .serializers import (
@@ -111,6 +113,12 @@ class CustomerViewSet(
 ):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
     @action(detail=False, methods=["GET", "PUT"])
     def me(self, request):
